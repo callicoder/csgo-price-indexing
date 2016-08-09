@@ -8,6 +8,7 @@ from pymongo import MongoClient
 def main():
 	client = MongoClient('mongodb://localhost:27017/')
 	db = client.csgobyte
+	db.authenticate('bot', 'bot@123')
 	pricing = db.pricing
 
 	url = 'http://steamcommunity.com/market/search/render/?start={0}&count=100&sort_column=price&sort_dir=asc&appid=730'
