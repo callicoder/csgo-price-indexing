@@ -1,4 +1,4 @@
-Python script to crawl steam's marketplace website, fetch the latest prices of
+Python script to crawl steamcommunity's marketplace website, fetch the latest prices of
 csgo items and build the price index in mongodb.
 
 ## How to Setup
