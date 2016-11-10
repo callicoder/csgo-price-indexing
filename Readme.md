@@ -1,5 +1,8 @@
-# Fork the reposirtory
-# Clone your Forked Copy
+Python script to crawl steam's marketplace website, fetch the latest prices of
+csgo items and build the price index in mongodb.
+
+## How to Setup
+
 # Create a Virtual environment
   
   virtualenv datacollect

@@ -8,7 +8,6 @@ from pymongo import MongoClient
 def main():
 	client = MongoClient('mongodb://localhost:27017/')
 	db = client.csgobyte
-	db.authenticate('bot', 'bot@123')
 	pricing = db.pricing
 
 	url = 'http://steamcommunity.com/market/search/render/?start={0}&count=100&sort_column=price&sort_dir=asc&appid=730'
@@ -34,7 +33,6 @@ def main():
 			if response.text == "null":
 				time.sleep(300)
 				response = requests.get(request_url)
-				print response.text		
 		except:
 			time.sleep(300)
 			response = requests.get(request_url)
@@ -47,8 +45,7 @@ def main():
 			marketing_hash_name = row.find(class_="market_listing_item_name").string
 			market_hash_price = row.find(class_="market_listing_their_price").span.span.string
 			market_hash_price = market_hash_price.replace(' USD', '')
-			market_hash_price = market_hash_price.replace('$', '')		
-			print market_hash_price
+			market_hash_price = market_hash_price.replace('$', '')
 			market_hash_price = float(market_hash_price)
 			pricing_data= {"market_hash_name": marketing_hash_name, "market_hash_price":market_hash_price}
 			pricing.update({"market_hash_name": marketing_hash_name}, {"$set": {"market_hash_price":market_hash_price}}, upsert=True)
